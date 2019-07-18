@@ -1,5 +1,7 @@
 package com.soft.yann.bean;
 
+import java.util.List;
+
 public class Hr {
     private Long id;
     private String name;
@@ -10,6 +12,7 @@ public class Hr {
     private String username;
     private String password;
     private String remark;
+    List<Role> roles;
     private String userface;
 
     public Long getId() {
@@ -82,6 +85,14 @@ public class Hr {
 
     public void setRemark(String remark) {
         this.remark = remark;
+    }
+
+    public List<Role> getRoles() {
+        return roles;
+    }
+
+    public void setRoles(List<Role> roles) {
+        this.roles = roles;
     }
 
     public String getUserface() {

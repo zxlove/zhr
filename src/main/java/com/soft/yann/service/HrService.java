@@ -18,7 +18,7 @@ public class HrService {
     public Hr queryHrById(Long id) {
         Hr hr = hrMapper.queryHrById(id);
         if (hr == null) {
-            LOG.error(String.format("Can not find Hr by %s.", id));
+            LOG.error(String.format("Can not find Hr by id:%s.", id));
         }
         return hr;
     }

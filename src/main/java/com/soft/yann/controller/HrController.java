@@ -11,6 +11,7 @@ public class HrController {
     @Autowired
     HrService hrService;
 
+
     @RequestMapping(value = "/hr/{id}", method = RequestMethod.GET)
     public Hr queryHrById(@PathVariable Long id) {
         return hrService.queryHrById(id);

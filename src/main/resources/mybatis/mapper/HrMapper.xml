@@ -15,11 +15,20 @@
         <result column="userface" property="userface"/>
         <result column="remark" property="remark"/>
     </resultMap>
+
+    <resultMap id="roleHrMapResult" type="com.soft.yann.bean.Hr" extends="HrMapResult">
+        <collection property="roles" ofType="com.soft.yann.bean.Role" select="com.soft.yann.mapper.HrMapper.queryRolesByHrId"
+                    column="id"></collection>
+    </resultMap>
+
+    <select id="queryRolesByHrId" resultType="com.soft.yann.bean.Role">
+        SELECT r.id, r.name, r.nameZh FROM hr_role h,role r where h.rid=r.id AND h.hrid=#{id}
+    </select>
     
-    <select id="queryHrById" resultMap="HrMapResult">
-        select t.id, t.phone, t.telephone, t.address, t.enabled,
-        t.username, t.password, t.userface, t.remark
-        from hr t
-        where t.id = #{id};
+    <select id="queryHrById" resultMap="roleHrMapResult">
+        select h.id, h.phone, h.telephone, h.address, h.enabled, h.username,
+        h.password, h.userface, h.remark
+        from hr h
+        where h.id = #{id};
     </select>
 </mapper>
